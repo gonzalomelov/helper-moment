@@ -35,8 +35,8 @@ module.exports = function momentHelper(str, pattern, options) {
 
     var date = moment(str);
 
-    if (block.hash.timezone){
-      date.tz(block.hash.timezone);
+    if (opts.hash.timezone){
+      date.tz(opts.hash.timezone);
     }
 
     for (var key in opts.hash) {
