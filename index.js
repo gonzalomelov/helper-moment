@@ -7,7 +7,7 @@
 'use strict';
 
 var typeOf = require('kind-of');
-var moment = require('moment');
+var moment = require('moment-timezone');
 var extend = require('extend-shallow');
 
 /**
@@ -34,6 +34,11 @@ module.exports = function momentHelper(str, pattern, options) {
     }
 
     var date = moment(str);
+
+    if (block.hash.timezone){
+      date.tz(block.hash.timezone);
+    }
+
     for (var key in opts.hash) {
       if (date[key]) {
         return date[key](opts.hash[key]);
